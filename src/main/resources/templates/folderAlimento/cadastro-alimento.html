@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+	
+<body>
+<section layout:fragment="conteudo">
+
+<div class="page-header">
+	<div class="container-fluid">
+		<h1>
+			Cadastro de Alimentos
+		</h1>
+	</div>
+</div>
+
+<div class="container-fluid">
+
+	<form method="POST" class="form-vertical  js-form-loading" 
+			th:object="${alimento}" th:action="@{/alimento/novo}">
+		<div class="alert  alert-danger  alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<th:block th:each="error : ${#fields.detailedErrors()}">
+				<div>
+					<i class="fa  fa-exclamation-circle"></i>
+					<span th:text="${error.message}"></span>
+				</div>
+			</th:block>
+		</div>
+		
+		<div class="alert  alert-success" th:if="${!#strings.isEmpty(mensagemCadastro)}">
+			<span th:text="${mensagemCadastro}"></span>
+		</div>
+		
+		<input type="hidden" th:field="*{id}"/>
+		
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label for="nome">Nome</label>
+					<input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+				</div>
+			</div>
+			
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label for="grupo">Grupo</label>
+					<select id="grupo" class="form-control" th:field="*{grupo}">
+						<option value="">Selecione o grupo</option>
+						<option th:each="grupo : ${grupoSelecao}" th:value="${grupo}" th:text="#{|alimentoGrupo.${grupo}|}"></option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label for="caloria">Caloria</label>
+					<input id="caloria" type="text" class="form-control" th:field="*{caloria}"/>
+				</div>
+			</div>
+			
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label for="porcaoDiaria">Porção diária</label>
+					<input id="porcaoDiaria" type="text" class="form-control" th:field="*{porcaoDiaria}"/>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="composicao">Composição</label>
+					<input id="composicao" type="text" class="form-control" th:field="*{composicao}"/>
+				</div>
+			</div>
+			
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="beneficios">Benefícios</label>
+					<input id="beneficios" type="text" class="form-control" th:field="*{beneficios}"/>
+				</div>
+			</div>
+			
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="variedades">Variedades</label>
+					<input id="variedades" type="text" class="form-control" th:field="*{variedades}"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+						
+			<div class="col-sm-12">
+				<div class="form-group">
+					<label for="descricao">Descrição</label>
+					<input id="descricao" type="text" class="form-control" th:field="*{descricao}"/>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="form-group">
+			<button class="btn  btn-primary" type="submit">Salvar</button>
+		</div>
+
+	</form>
+</div>
+
+</section>
+</body>
+</html>

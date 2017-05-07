@@ -1,0 +1,39 @@
+.av-table-catalogo-col-id, .av-table-catalogo-col-icons {
+	width: 50px;
+	text-align: center;
+}
+
+.av-table-catalogo-col-nome {
+	width: 100px;
+	text-align: center;
+}
+
+.av-table-catalogo-col-descricao {
+	width: 200px;
+	text-align: center;
+}
+
+.av-table-catalogo-col-composicao {
+	width: 100px;
+	text-align: center;
+}
+
+.av-table-catalogo-col-variedades {
+	width: 150px;
+	text-align: center;
+}
+
+.av-table-catalogo-col-grupo {
+	width: 100px;
+	text-align: center;
+}
+
+.av-table-catalogo-col-caloria {
+	width: 100px;
+	text-align: center;
+}
+
+.av-table-catalogo-col-porcao_diaria {
+	width: 100px;
+	text-align: center;
+}

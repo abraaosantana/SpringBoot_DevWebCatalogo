@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-simples}">
+
+<th:block layout:fragment="conteudo">
+	<form autocomplete="on" th:action="@{/registration}"
+		th:object="${user}" method="post" class="form-horizontal" role="form">
+		<div class="aw-simple-panel">
+			<img alt="DevWeb-Tecnologia"
+				th:src="@{/layout/images/devweb_logo-gray.png}" />
+			<div class="aw-simple-panel__message">Realize seu cadastro</div>
+			<div class="aw-simple-panel__box">
+				<div class="form-group">
+					<label th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"	class="validation-message"></label> 
+					<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control" />	
+				</div>
+
+				<div class="form-group">
+					<label th:if="${#fields.hasErrors('ultimoNome')}"	th:errors="*{ultimoNome}" class="validation-message"></label>
+					<input type="text" th:field="*{ultimoNome}" placeholder="Último Nome" class="form-control" />
+				</div>
+				
+				<div class="form-group">	
+					<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
+					<input type="text" th:field="*{email}" placeholder="Email" class="form-control" /> 
+				</div>
+				
+				<div class="form-group">
+					 <label
+						th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
+					<input type="password" th:field="*{password}" placeholder="Password" class="form-control" />
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-block">Registrar Usuário</button>	
+				</div>
+
+				<span th:utext="${successMessage}"></span>
+			</div>
+		</div>
+	</form>
+
+	<form th:action="@{/}" method="get">
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Ir para página de Login</button>
+	</form>
+
+	<th:block>
+</html>

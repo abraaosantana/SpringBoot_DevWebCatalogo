@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/br/devwebtecnologia/catalogo/model/AlimentoGrupo.java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/ValidationMessages.properties=UTF-8
+encoding//src/main/resources/messages.properties=UTF-8
+encoding//src/main/resources/templates/error/403.html=UTF-8
+encoding//src/main/resources/templates/error/404.html=UTF-8
+encoding//src/main/resources/templates/error/500.html=UTF-8
+encoding//src/main/resources/templates/esqueceu-a-senha.html=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8
