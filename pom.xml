@@ -6,7 +6,7 @@
 	<groupId>com.br.devwebtecnologia</groupId>
 	<artifactId>devweb-catalogo</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	
+
 	<packaging>jar</packaging>
 
 	<name>devweb-catalogo</name>
@@ -23,7 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		
+
 		<thymeleaf.version>3.0.3.RELEASE</thymeleaf.version>
 		<thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
 		<thymeleaf-extras-data-attribute.version>2.0.1</thymeleaf-extras-data-attribute.version>
@@ -48,13 +48,13 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-	
-<!-- 		<dependency> -->
-<!-- 			<groupId>mysql</groupId> -->
-<!-- 			<artifactId>mysql-connector-java</artifactId> -->
-<!-- 			<scope>runtime</scope> -->
-<!-- 		</dependency> -->
-		
+
+		<!-- <dependency> -->
+		<!-- <groupId>mysql</groupId> -->
+		<!-- <artifactId>mysql-connector-java</artifactId> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -69,18 +69,18 @@
 
 		<dependency>
 			<groupId>com.github.mxab.thymeleaf.extras</groupId>
-    		<artifactId>thymeleaf-extras-data-attribute</artifactId>
+			<artifactId>thymeleaf-extras-data-attribute</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
-  			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
-  		</dependency>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+		</dependency>
 
 	</dependencies>
 
