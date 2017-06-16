@@ -12,10 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.data.annotation.Transient;
 
 @Entity
@@ -27,24 +30,31 @@ public class SegUsuario {
 	@Column(name = "id_usuario")
 	private Long id;
 	
-	@Column(name = "email")
-	@Email(message = "*Por favor iforme um email válido!")
-	@NotEmpty(message = "*Por favor informe um email!")
-	private String email;
-	
-	@Column(name = "password")
-	@Length(min = 6, message = "*Sua senha deve conter no mínimo 6 caracteres!")
-	@NotEmpty(message = "*Por favor informe sua senha!")
-	@Transient
-	private String password;
-	
 	@Column(name = "nome")
-	@NotEmpty(message = "*Por favor informe seu nome!")
+	@NotEmpty(message = "*Informe seu nome!")
+	@Pattern(message = "*Informe apenas letras no campo nome!", regexp ="^[A-Za-z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]*$")
 	private String nome;
 	
 	@Column(name = "ultimo_nome")
-	@NotEmpty(message = "*Por favor informe seu último nome")
+	@NotEmpty(message = "*Informe seu Sobrenome!")
+	@Pattern(message = "*Informe apenas letras no campo Sobrenome!", regexp ="^[A-Za-z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]*$")
 	private String ultimoNome;
+	
+	@Column(name = "cpf", unique = true)
+	@CPF(message = "*Informe um CPF válido!")
+	private String cpf;
+	
+	@Column(name = "email")
+	@NotEmpty(message = "*Informe um email!")
+	@Email(message = "*Iforme um email válido!")
+	private String email;
+	
+	@Column(name = "password")
+	@NotEmpty(message = "*Informe sua senha!")
+	@Length(min = 6, message = "*Sua senha deve conter no mínimo 6 caracteres!")
+	@Transient
+	private String password;
+	
 	
 	@Column(name = "ativo")
 	private boolean ativo;
@@ -106,6 +116,22 @@ public class SegUsuario {
 	}
 
 	public void setRoles(Set<SegRole> segRole) {
+		this.segRole = segRole;
+	}
+	
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Set<SegRole> getSegRole() {
+		return segRole;
+	}
+
+	public void setSegRole(Set<SegRole> segRole) {
 		this.segRole = segRole;
 	}
 

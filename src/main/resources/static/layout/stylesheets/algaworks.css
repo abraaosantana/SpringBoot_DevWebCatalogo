@@ -331,6 +331,11 @@
 }
 .aw-simple-panel__message.is-error {
   color: #e70500;
+  font-size: x-large;
+}
+.aw-simple-panel__message.is-success {
+  color: #008040;
+  font-size: x-large;
 }
 .aw-simple-panel__box {
   padding: 20px;

@@ -5,16 +5,20 @@
 	layout:decorate="~{layout/layout-simples}">
 
 <th:block layout:fragment="conteudo">
-	<form th:action="@{/login}" method="POST">
+	<form th:object="${user}" th:action="@{/login}" method="POST">
 		<div class="aw-simple-panel">
 			<img alt="DevWeb-Tecnologia"
 				th:src="@{/layout/images/devweb_logo-gray.png}" />
-
-			<div class="aw-simple-panel__message">Por favor, faça o login.</div>
-
+				
+				<div class="aw-simple-panel__message  is-success">
+					<span th:utext="${successMessage}"></span>
+				</div>
+			
 			<div class="aw-simple-panel__message  is-error"
-				th:if="${#bools.isTrue(param.error)}">O usuário e/ou senha não conferem!</div>
-
+				th:if="${#bools.isTrue(param.error)}">O usuário e/ou senha não conferem!
+				<span th:utext="${errorNovoUsuario}"></span></div>
+								
+				
 			<div class="aw-simple-panel__box">
 				<div class="form-group  has-feedback">
 					<input type="text" class="form-control  input-lg"
@@ -39,6 +43,9 @@
 					</div>
 
 					<div class="pull-right">
+					    <div class="aw-simple-panel__message  is-error">
+					    	<span th:utext="${errorMessageEmail}"></span> 
+					    </div>
 						<a th:href="@{/esqueceu-a-senha}">Esqueceu a senha?</a>
 					</div>
 				</div>
@@ -53,6 +60,7 @@
 	<form th:action="@{/registration}" method="get">
 		<button class="btn btn-md btn-warning btn-block" type="Submit">Ainda não tem uma conta? Inscreva-se</button>
 	</form>
+	
 </th:block>
 
 </html>

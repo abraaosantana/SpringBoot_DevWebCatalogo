@@ -22,6 +22,7 @@ import com.br.devwebtecnologia.catalogo.model.SegUsuario;
 import com.br.devwebtecnologia.catalogo.repository.RoleRepository;
 import com.br.devwebtecnologia.catalogo.repository.UserRepository;
 
+@Transactional
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
 
@@ -65,9 +66,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Transactional
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		SegUsuario user = userRepository.findByEmail(userName);
-		List<GrantedAuthority> authorities = getUserAuthority(user.getRole());
+		List<GrantedAuthority> authorities = getUserAuthority(user.getRole());	
+		
 		return buildUserForAuthentication(user, authorities);
+		
 	}
+ 
+
 
 	private List<GrantedAuthority> getUserAuthority(Set<SegRole> userRole) {
 		Set<GrantedAuthority> roles = new HashSet<GrantedAuthority>();
@@ -80,7 +85,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	private UserDetails buildUserForAuthentication(SegUsuario user, List<GrantedAuthority> authorities) {
+		
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isAtivo(), true, true, true, authorities);
 	}
+	
 
 }
