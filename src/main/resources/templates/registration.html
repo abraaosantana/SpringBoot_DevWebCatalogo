@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout-simples}">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout-simples}">
 
 <th:block layout:fragment="conteudo">
+	<!--/*@thymesVar id="user" type="org.thymeleaf"*/-->
 	<form autocomplete="on" th:action="@{/registration}"
 		th:object="${user}" method="post" class="form-horizontal" role="form">
 				
@@ -12,26 +14,27 @@
 				th:src="@{/layout/images/devweb_logo-gray.png}" />
 			<div class="aw-simple-panel__message">Realize seu cadastro</div>
 			<div class="aw-simple-panel__box">
-			
+
 			<div class="aw-simple-panel__message  is-errorRegistro">
+				<!--/*@thymesVar id="errorMessage" type="org.thymeleaf"*/-->
 				<div th:each="erro : ${errorMessage}">
 					<span th:utext="${erro}"></span>
 				</div>
 			</div>
-			
-			
-								
+
+
+
 				<div class="form-group">
-					<label th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></label> 
-					<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control" />	
+					<label th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></label>
+					<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control" />
 				</div>
 
 				<div class="form-group">
 					<label th:if="${#fields.hasErrors('ultimoNome')}" th:errors="*{ultimoNome}"></label>
 					<input type="text" th:field="*{ultimoNome}" placeholder="Sobrenome" class="form-control" />
 				</div>
-				
-				<div class="form-group">	
+
+				<div class="form-group">
 					<label th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></label>
 					<input type="text" th:field="*{cpf}" placeholder="CPF - Apenas números" class="form-control" /> 
 				</div>
@@ -57,11 +60,12 @@
 		</div>
 	</form>
 
+
 	<form th:action="@{/}" method="get">
 		<button class="btn btn-md btn-warning btn-block" type="Submit">Ir para página de Login</button>
 	</form>
-	
-	<th:block>
-	
+
+</th:block>
 
 </html>
+

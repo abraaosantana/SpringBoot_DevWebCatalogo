@@ -1,1 +1,7 @@
 /target/
+/.idea/
+/.classpath
+/.project
+/.springBeans
+/.settings/
+/devweb-catalogo.iml
