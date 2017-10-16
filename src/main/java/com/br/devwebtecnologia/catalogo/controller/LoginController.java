@@ -36,9 +36,10 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView("/login");
 		
 		if (user != null) {
-			modelAndView.setViewName("alimento");
+			modelAndView.setViewName("folderAlimento/pesquisa-alimento");
 			return modelAndView;
 		} else {
+			logger.info("loginController.login: Teste do logger");
 			
 			modelAndView.addObject("errorNovoUsuario", "Se é o primeiro acesso, realize o cadasto!");
 			
@@ -93,14 +94,14 @@ public class LoginController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/folderAlimento/cadastro-alimento")
+	@GetMapping("/cadastro-alimento")
 	public ModelAndView home(){
 		ModelAndView modelAndView = new ModelAndView("/folderAlimento/cadastro-alimento");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		SegUsuario user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName", "Welcome " + user.getNome() + " " + user.getUltimoNome() + " (" + user.getEmail() + ")");
 		modelAndView.addObject("adminMessage","Conteúdo disponível apenas para usuários com permissão de administrador!");
-		modelAndView.setViewName("admin/home");
+		modelAndView.setViewName("folderAlimento/cadastro-alimento");
 		return modelAndView;
 	}
 	

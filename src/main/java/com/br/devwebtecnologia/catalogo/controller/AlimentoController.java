@@ -23,7 +23,7 @@ public class AlimentoController {
 
 	@Autowired
 	private AlimentoInterface alimentoInterface;
-
+	
 	@GetMapping("/novo")
 	public ModelAndView novo(Alimento alimentoObj) {
 		ModelAndView mv = new ModelAndView("folderAlimento/cadastro-alimento");

@@ -48,9 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/login").permitAll()
 				.antMatchers("/esqueceu-a-senha").permitAll()
 				.antMatchers("/registration").permitAll()
-				//utilizar quando a autorização é atraves da classe sem banco de dados
-//				.antMatchers("/alimento").hasRole("ADMIN")
-				.antMatchers("/alimento").permitAll()
+				.antMatchers("/alimento").hasAuthority("ADMIN")
 				.antMatchers("/alimento/**").hasAuthority("ADMIN")
 				.anyRequest().authenticated()
 				.and()
@@ -64,8 +62,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/").and().exceptionHandling()
-				.accessDeniedPage("/error/403");;
+				.logoutSuccessUrl("/").and()
+			.exceptionHandling()
+				.accessDeniedPage("/403");;
 
 	}
 	
